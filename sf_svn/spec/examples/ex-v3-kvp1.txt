@@ -1,0 +1,8 @@
+ <annotation>
+  <listOfKeyValuePairs xmlns="http://sbml.org/fbc/keyvaluepair">
+   <keyValuePair key="keyX" uri="https://tinyurl.com/ybyr7b62" value="47"/>
+   <keyValuePair key="ZZkey" uri="urn:tinyurl.com:example:kvp" value="level 5"/>
+   <keyValuePair key="x-factor" uri="https://tinyurl.com/ybyr7b62"
+                                value="intangible metaphysical property"/>
+  </listOfKeyValuePairs>
+ </annotation>

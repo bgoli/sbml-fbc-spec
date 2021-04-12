@@ -1,0 +1,63 @@
+<reaction metaid="meta_R_GTHS" id="R_GTHS" name="glutathione synthetase" reversible="false"
+          fbc:lowerFluxBound="R_GTHS_l" fbc:upperFluxBound="R_GTHS_u">
+ <annotation>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   <rdf:Description rdf:about="#meta_R_GTHS">
+    <bqbiol:is>
+     <rdf:Bag>
+      <rdf:li rdf:resource="http://identifiers.org/ec-code/6.3.2.3"/>
+     </rdf:Bag>
+    </bqbiol:is>
+   </rdf:Description>
+  </rdf:RDF>
+ </annotation>
+ <fbc:geneProductAssociation fbc:id="gpr_GTHS">
+  <fbc:geneProductRef fbc:geneProduct="g_b2947"/>
+ </fbc:geneProductAssociation>
+ <listOfReactants>
+  <speciesReference constant="true" species="M_atp_c" stoichiometry="1"/>
+  <speciesReference constant="true" species="M_glucys_c" stoichiometry="1"/>
+  <speciesReference constant="true" species="M_gly_c" stoichiometry="1"/>
+  </listOfReactants>
+ <listOfProducts>
+  <speciesReference constant="true" species="M_adp_c" stoichiometry="1"/>
+  <speciesReference constant="true" species="M_gthrd_c" stoichiometry="1"/>
+  <speciesReference constant="true" species="M_h_c" stoichiometry="1"/>
+  <speciesReference constant="true" species="M_pi_c" stoichiometry="1"/>
+ </listOfProducts>
+</reaction>
+<fbc:listOfGeneProducts>
+  <fbc:geneProduct metaid="meta_g_b2947" fbc:id="g_b2947" fbc:label="b2947">
+   <annotation>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+     <rdf:Description rdf:about="#meta_g_b2947">
+      <bqbiol:isEncodedBy>
+       <rdf:Bag>
+        <rdf:li rdf:resource="http://identifiers.org/ncbigene/947445"/>
+       </rdf:Bag>
+      </bqbiol:isEncodedBy>
+     </rdf:Description>
+    </rdf:RDF>
+   </annotation>
+  </fbc:geneProduct>
+</fbc:listOfGeneProducts>
+<listOfParameters>
+ <parameter id="R_GTHS_l" constant="true" sboTerm="SBO:0000625" value="0" sboTerm="SBO:0000625" />
+ <parameter metaid="meta_R_GTHS_u" id="R_GTHS_u" constant="true" value="inf" sboTerm="SBO:0000625">
+   <annotation>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+     <rdf:Description rdf:about="#meta_R_GTHS_u">
+      <bqbiol:isDescribedBy><rdf:Bag>
+       <rdf:li rdf:resource="http://identifiers.org/pmc/PMC193654"/>
+      </rdf:Bag></bqbiol:isDescribedBy>
+     </rdf:Description>
+    </rdf:RDF>
+   </annotation>
+ </parameter>
+</listOfParameters>

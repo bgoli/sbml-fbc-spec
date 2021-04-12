@@ -1,0 +1,16 @@
+<listOfParameters>
+ <parameter id="R1l" constant="true" value="0" sboTerm="SBO:0000625" />
+ <parameter id="R1u" constant="true" value="1" sboTerm="SBO:0000625" />
+</listOfParameters>
+
+...
+
+<reaction id="R1" reversible="false" fast="false"
+  fbc:upperFluxBound="R1l" fbc:upperFluxBound="R1u">
+ <listOfReactants>
+  <speciesReference species="IN" stoichiometry="1" constant="true"/>
+ </listOfReactants>
+ <listOfProducts>
+  <speciesReference species="A" stoichiometry="1" constant="true"/>
+ </listOfProducts>
+</reaction>

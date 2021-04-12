@@ -1,0 +1,6 @@
+<fbc:geneAssociation fbc:id="ga_18" fbc:reaction="R_ACACCT">
+ <fbc:and>
+  <fbc:gene fbc:name="b2222"/>
+  <fbc:gene fbc:name="b2221"/>
+ </fbc:and>
+</fbc:geneAssociation>

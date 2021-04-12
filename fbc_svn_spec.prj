@@ -1,0 +1,70 @@
+33 Patch Control
+
+0
+0
+1
+sf_svn\spec\main.tex
+15
+7
+0
+
+sf_svn\spec\main.tex
+TeX:UNIX
+420589563 0 -1 1845 -1 1630 0 0 1230 593 0 1 43 418 -1 -1 0 0 28 -1 -1 28 1 0 1630 -1  0 -1 0
+sf_svn\spec\syntax_gene_association.tex
+TeX
+1060859 2 -1 49 -1 47 192 192 993 924 0 1 43 19 -1 -1 0 0 45 -1 -1 45 1 0 47 -1  0 -1 0
+sf_svn\spec\syntax_user_constraints.tex
+TeX
+17838075 0 -1 18884 -1 811 64 64 1821 856 0 1 53 266 -1 -1 0 0 45 -1 -1 45 1 0 811 -1  0 -1 0
+sf_svn\spec\examples\ex-v3-kvp1.txt
+ASCII
+5252987 0 2 34 2 62 128 128 1006 860 1 0 695 38 -1 -1 0 0 14 0 0 14 1 0 62 2  0 0 0
+sf_svn\spec\intro.tex
+TeX:UNIX
+1159163 0 -1 4386 -1 4245 96 96 1853 888 0 1 563 969 -1 -1 0 0 45 -1 -1 45 1 0 4245 -1  0 -1 0
+sf_svn\spec\syntax.tex
+TeX:UNIX
+1159163 1 -1 10717 -1 10580 160 160 961 892 0 1 43 646 -1 -1 0 0 45 -1 -1 45 1 0 10580 -1  0 -1 0
+sf_svn\spec\acknowledgments.tex
+TeX:UNIX
+1159163 0 9 92 -1 1402 352 352 1153 1062 0 1 43 399 -1 -1 0 0 45 -1 -1 45 1 0 1402 -1  0 -1 0
+C:\Program Files\WinEdt Team\WinEdt 10\Exec\PDF\PDFCloseDoc.edt
+ASCII:EDT
+269494138 7 52 1 51 1 182 182 1255 879 1 0 73 867 -1 -1 0 0 21 0 0 21 1 0 1 51  0 0 0
+sf_svn\spec\apdx-sbo.tex
+TeX
+269496315 1 -1 689 -1 681 0 0 801 710 0 1 97 598 -1 -1 0 0 -1 -1 -1 -1 1 0 681 -1  0 -1 0
+sf_svn\spec\examples.tex
+TeX:UNIX
+1159163 2 -1 762 -1 739 320 320 1121 1030 0 1 49 437 -1 -1 0 0 -1 -1 -1 -1 1 0 739 -1  0 -1 0
+sf_svn\spec\background.tex
+TeX:UNIX
+1159163 2 -1 87 -1 68 256 256 1057 988 0 1 49 69 -1 -1 0 0 -1 -1 -1 -1 1 0 68 -1  0 -1 0
+sf_svn\spec\examples\ex-v3-userconstraints.txt
+ASCII
+5252987 0 24 78 15 5 96 96 973 879 1 0 149 345 -1 -1 0 0 19 0 0 19 1 0 5 15  0 0 0
+sf_svn\spec\best-practices.tex
+TeX:UNIX
+269594619 2 -1 2657 -1 2631 288 288 1089 1020 0 1 49 529 -1 -1 0 0 -1 -1 -1 -1 1 0 2631 -1  0 -1 0
+sf_svn\spec\apdx-validation.tex
+TeX:UNIX
+1159163 0 -1 0 -1 0 224 224 1025 956 0 1 49 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1  0 -1 0
+sf_svn\spec\examples\ex_objf_l3.txt
+ASCII
+273688443 0 0 1 0 1 96 96 973 879 1 0 101 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0  0 0 0
+
+*sf_svn\spec\main.tex
+>
+*intro
+*background
+*syntax
+*syntax_gene_association
+*syntax_user_constraints
+*examples
+*best-practices
+*apdx-validation
+*apdx-sbo
+*acknowledgments
+*fbc
+<
