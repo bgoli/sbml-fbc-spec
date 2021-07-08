@@ -3,14 +3,14 @@
 \newpage
 \section{Proposal for \FBC version 3: HARMONY 2020}
 
-The proposed \FBCPackage version~3 extends the definition of the \FluxObjective, extends the definition of the \token{chemicalFormula}, redefines \token{charge} as a double, defines a \UserConstraint and adds a generic \KeyValuePair annotation.
+The proposed \FBCPackage version~3 extends the definition of the \FluxObjective, extends the definition of the \token{chemicalFormula}, redefines \token{charge} as a double, defines a \UserDefinedConstraint and adds a generic \KeyValuePair annotation.
 %
 \begin{quote}
  \newtxt{\textbf{The extensions and modifications contained in this document are proposed as version 3 of the \FBCPackage. This proposal is been formulated through open discussions on the \FBC PWG mailing list and intense discussion during HARMONY 2018 and HARMONY 2020. }}
 \end{quote}
 %
 \begin{quote}
-  \newtxt{At HARMONY 2020 it was decided that the name `UserConstraint' should be changed to something else.}
+  \newtxt{At HARMONY 2020 it was decided that the name `UserDefinedConstraint' should be changed to something else.}
 \end{quote}
 
 %
@@ -31,27 +31,27 @@ Please note that where specification text (or UML) has been modified and diverge
 \label{model-class-kv}
 %\label{listoffluxbounds-class}
 
-The \SBML \Model class is extended by a \token{listOfUserConstraints} of which it may contain at most one, see  \ref{fig:fbc_v3_uml_user_constraints}.
+The \SBML \Model class is extended by a \token{listOfUserDefinedConstraints} of which it may contain at most one, see  \ref{fig:fbc_v3_uml_user_constraints}.
 
 \subsubsection{Type \primtypeNC{FbcVariableType}}
 \label{primtype-fbcvariabletype}
 
 The \FBCPackage defines a new enumerated type \primtype{FbcVariableType} which
-represents the index of a variable that occurs in either the \FluxObjective or \UserConstraintComponent. It contains the following two values, \val{linear} or \val{quadratic}.
+represents the index of a variable that occurs in either the \FluxObjective or \UserDefinedConstraintComponent. It contains the following two values, \val{linear} or \val{quadratic}.
 
 
 %\subsubsection{Type \primtypeNC{FbcUCCVariableType}}
-%\label{primtype-fbcuserconstraintvariabletype}
+%\label{primtype-fbcuserdefinedconstraintvariabletype}
 %
 %The \FBCPackage defines a new enumerated type \primtype{FbcUCCVariableType} which
 %represents the index of a variable that occurs in a user defined constraint. It can have one
 %of the following two values \val{linear} or \val{quadratic}.
 
-\subsubsection{The \FBC \class{listOfUserConstraints}}
-\label{listofuserconstraints-class}
+\subsubsection{The \FBC \class{listOfUserDefinedConstraints}}
+\label{listofuserdefinedconstraints-class}
 
-As shown in \ref{fig:fbc_v3_uml_user_constraints} the \ListOfUserConstraints is derived from \SBase and inherits the attributes \token{metaid} and \token{sboTerm}, as well as
-the subcomponents for \Annotation and \Notes. The \ListOfUserConstraints must contain at least one \UserConstraint (defined in \ref{userconstraint-class}).
+As shown in \ref{fig:fbc_v3_uml_user_constraints} the \ListOfUserDefinedConstraints is derived from \SBase and inherits the attributes \token{metaid} and \token{sboTerm}, as well as
+the subcomponents for \Annotation and \Notes. The \ListOfUserDefinedConstraints must contain at least one \UserDefinedConstraint (defined in \ref{userdefinedconstraint-class}).
 
 \pagebreak
 
@@ -129,7 +129,7 @@ The \FBC \FluxObjective class is derived from \SBML \SBase and inherits
   % Requires \usepackage{graphicx}
   \includegraphics[width=6cm]{images/fbc_v3_uml_fobj.pdf}\\
   \caption{A UML representation of the \FBCPackage \FluxObjective class. For a complete description see \ref{fig:fbc_uml} as well as \ref{conventions} for conventions related to this figure.}
-  \label{fig:fbc_uml_userconstraint}
+  \label{fig:fbc_uml_userdefinedconstraint}
 \end{figure}
 %
 The \FluxObjective class is a relatively simple container for a model
@@ -166,84 +166,84 @@ takes the units of the \token{reaction} flux i.e.,~``extent per time''.
 
 
 
-\subsection{The \FBC \class{UserConstraint} class}
-\label{userconstraint-class}
+\subsection{The \FBC \class{UserDefinedConstraint} class}
+\label{userdefinedconstraint-class}
 
-The \FBC \UserConstraint class is derived from \SBML \SBase and inherits
+The \FBC \UserDefinedConstraint class is derived from \SBML \SBase and inherits
 \token{metaid} and \token{sboTerm}, as well as the subcomponents for
-\Annotation and \Notes. It's purpose is to define non-stoichiometric constraints, that is  constraints that are not necessarily defined by the stoichiometrically coupled reaction network. In order to achieve we defined a new type of linear constraint, the \UserConstraint.
+\Annotation and \Notes. It's purpose is to define non-stoichiometric constraints, that is  constraints that are not necessarily defined by the stoichiometrically coupled reaction network. In order to achieve we defined a new type of linear constraint, the \UserDefinedConstraint.
 %
 \begin{figure}[ht]
   \centering
   % Requires \usepackage{graphicx}
-  %\includegraphics[width=6cm]{images/fbc_v3_uml_userconstraint.pdf}\\
-  \includegraphics[width=0.9\textwidth]{images/fbc_v3_uml_userconstraint.pdf}\\
+  %\includegraphics[width=6cm]{images/fbc_v3_uml_userdefinedconstraint.pdf}\\
+  \includegraphics[width=0.9\textwidth]{images/fbc_v3_uml_userdefinedconstraint.pdf}\\
   \caption{A UML representation of the \SBML \Model class extended in
-  the \FBCPackage by the \ListOfUserConstraints. See \ref{conventions} for conventions related to this figure.}
+  the \FBCPackage by the \ListOfUserDefinedConstraints. See \ref{conventions} for conventions related to this figure.}
   \label{fig:fbc_v3_uml_user_constraints}
 \end{figure}
 
 
-Analogous to the attributes described in \ref{reaction-class-ga} the \token{lowerBound} and \token{upperBound} form the boundaries of the \UserConstraint.
+Analogous to the attributes described in \ref{reaction-class-ga} the \token{lowerBound} and \token{upperBound} form the boundaries of the \UserDefinedConstraint.
 %
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
-  \UserConstraint &=& \token{value} \\
-  \UserConstraint &\geq& \token{lowerBound value} \\
-  \UserConstraint &\leq& \token{upperBound value}
+  \UserDefinedConstraint &=& \token{value} \\
+  \UserDefinedConstraint &\geq& \token{lowerBound value} \\
+  \UserDefinedConstraint &\leq& \token{upperBound value}
 \end{eqnarray}
 %
 Defining either an equality if both \token{lowerBound} and \token{upperBound} refere to the same parameter (Equation~4) or set of inequalities (Equations 4 and 5).
 
-The \UserConstraint contains a \ListOfUserConstraintComponents representing a linear combination of \UserConstraintComponent{s}. Similar to a \FluxObjective each \UserConstraintComponent contains a coefficient--variable pair where the \token{coefficient} refers to a \Parameter. In addition to a \Reaction a \UserConstraintComponent allows the \token{variable} to refer to non-constant \Parameter thus allowing the definition of non-reaction, artificial, variables.
+The \UserDefinedConstraint contains a \ListOfUserDefinedConstraintComponents representing a linear combination of \UserDefinedConstraintComponent{s}. Similar to a \FluxObjective each \UserDefinedConstraintComponent contains a coefficient--variable pair where the \token{coefficient} refers to a \Parameter. In addition to a \Reaction a \UserDefinedConstraintComponent allows the \token{variable} to refer to non-constant \Parameter thus allowing the definition of non-reaction, artificial, variables.
 
 \paragraph{The \token{id} and \token{name} attributes}
-A \UserConstraint has an optional \token{id} of type
+A \UserDefinedConstraint has an optional \token{id} of type
 \primtype{SId} and an optional attribute \token{name} of type \primtype{string}.
 
 \paragraph{The \token{lowerBound} attribute}
-The required \token{lowerBound} attribute contains an \primtype{SIdRef} that references a \Parameter which contains the lower boundary value of the \UserConstraint.
+The required \token{lowerBound} attribute contains an \primtype{SIdRef} that references a \Parameter which contains the lower boundary value of the \UserDefinedConstraint.
 
 \paragraph{The \token{upperBound} attribute}
-The required \token{upperBound} attribute contains an \primtype{SIdRef} that references a \Parameter which contains the upper boundary value of the \UserConstraint.
+The required \token{upperBound} attribute contains an \primtype{SIdRef} that references a \Parameter which contains the upper boundary value of the \UserDefinedConstraint.
 
-\paragraph{The \token{listOfUserConstraintComponents} element}
-\label{listofuserconstraintcomponents-class}
+\paragraph{The \token{listOfUserDefinedConstraintComponents} element}
+\label{listofuserdefinedconstraintcomponents-class}
 
-The element \token{listOfUserConstraintComponents} which contains a
-\ListOfUserConstraintComponents is derived from and functions like a typical \SBML
+The element \token{listOfUserDefinedConstraintComponents} which contains a
+\ListOfUserDefinedConstraintComponents is derived from and functions like a typical \SBML
 \textsf{\textbf{ListOf\rule{0.15in}{0.5pt}}} class with the restriction that it
-must contain one or more elements of type \UserConstraintComponent (see \ref{userconstraintcomponent-class}).
-This implies that if a \UserConstraint is defined there should be at least
-one \UserConstraintComponent contained in a \ListOfUserConstraintComponents.
+must contain one or more elements of type \UserDefinedConstraintComponent (see \ref{userdefinedconstraintcomponent-class}).
+This implies that if a \UserDefinedConstraint is defined there should be at least
+one \UserDefinedConstraintComponent contained in a \ListOfUserDefinedConstraintComponents.
 
-\subsection{The \FBC \class{UserConstraintComponent} class}
-\label{userconstraintcomponent-class}
+\subsection{The \FBC \class{UserDefinedConstraintComponent} class}
+\label{userdefinedconstraintcomponent-class}
 
-The \FBC \UserConstraintComponent class is derived from \SBML \SBase and inherits
+The \FBC \UserDefinedConstraintComponent class is derived from \SBML \SBase and inherits
 \token{metaid} and \token{sboTerm}, as well as the subcomponents for
-\Annotation and \Notes. The \UserConstraintComponent class is a relatively simple container for a variable and a variable type specifier which is weighted by a signed coefficient.
+\Annotation and \Notes. The \UserDefinedConstraintComponent class is a relatively simple container for a variable and a variable type specifier which is weighted by a signed coefficient.
 
 \paragraph{The \token{id} and \token{name} attributes}
-An \UserConstraintComponent has an optional \token{id} of type \primtype{SId} and an optional attribute \token{name} of type \primtype{string}.
+An \UserDefinedConstraintComponent has an optional \token{id} of type \primtype{SId} and an optional attribute \token{name} of type \primtype{string}.
 
 \paragraph{The \token{coefficient} attribute}
 The required \token{coefficient} attribute contains an \primtype{SIdRef} that is restricted to reference only a constant \Parameter which holds the coefficient value. In \textbf{strict} mode a \Parameter whose \primtype{SId} is referenced by a \token{coefficient}, as in the case of a \FluxObjective \token{coefficient}, has to be constant and not take the value NaN or $\pm$inf.
 
 \paragraph{The \token{variable} attribute}
-The required \token{variable} attribute contains an \primtype{SIdRef} that is restricted to reference the \primtype{SId} of either a \Reaction or a non-constant \Parameter. Conversely, if such non-constant \Parameter's \primtype{SId} is referenced by a \UserConstraintComponent's \token{variable} attribute it may not be referenced by any \token{coefficient}, \token{lowerFluxBound} or \token{upperFluxBound} attribute.
+The required \token{variable} attribute contains an \primtype{SIdRef} that is restricted to reference the \primtype{SId} of either a \Reaction or a non-constant \Parameter. Conversely, if such non-constant \Parameter's \primtype{SId} is referenced by a \UserDefinedConstraintComponent's \token{variable} attribute it may not be referenced by any \token{coefficient}, \token{lowerFluxBound} or \token{upperFluxBound} attribute.
 
 \paragraph{The \token{variableType} attribute}
 The required \token{variableType} attribute contains a \primtype{FbcVariableType} that indicates whether a variable should be considered as `linear' or `quadratic'.
 
 \paragraph{User constraints: example code}
-The following example illustrates the encoding of the following two \UserConstraint{s}:
+The following example illustrates the encoding of the following two \UserDefinedConstraint{s}:
 \begin{eqnarray}
 % \nonumber to remove numbering (before each equation)
   RGLX - RXLG  &=& 5 \\
   2\cdot Avar - RGDP &\geq& 2
 \end{eqnarray}
-\exampleFile{examples/ex-v3-userconstraints.txt}
+\exampleFile{examples/ex-v3-userdefinedconstraints.txt}
 
 
 
