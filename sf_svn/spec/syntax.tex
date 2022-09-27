@@ -248,9 +248,7 @@ of two attributes \token{charge} and \token{chemicalFormula}.
 \label{chemicalFormula-attribute}
 
 The optional attribute \token{chemicalFormula} containing a \primtype{string} that represents the \Species objects elemental composition.
-%
-\exampleFile{examples/ex-v3-species.txt}
-%
+
 \newtxt{While there are many ways of referring to an elemental composition, the purpose of the \token{chemicalFormula} attribute is to enable reaction balancing and validation, something of particular importance in constraint-based models.}
 
 \newtxt{The format of the \token{chemicalFormula} should, whenever possible, consist only of atomic names
@@ -268,19 +266,21 @@ The optional attribute \token{chemicalFormula} containing a \primtype{string} th
 %
 \newtxt{Using this notation the number of carbon atoms in a molecule is indicated first, followed by the number of hydrogen atoms and then the number of all other chemical elements in alphabetical order. When the formula contains no carbon; all elements, including hydrogen, are listed alphabetically. Where there is more than a single atom present, this is indicated with an integer that follows the element symbol.}
 
-\newtxt{However, in certain situations it does become necessary to use a generic symbol in a user defined compound. For example, such symbols can include \textsf{R} and \textsf{X} and have the general form of a single capital letter followed by zero or more lowercase letters.}
+\exampleFile{examples/ex-v3-species.txt}
+%
+\newtxt{However, in certain situations, it may become necessary to use a generic symbol to represent an undefined or generic component of a user-defined compound. Generic components can only be specified as the symbols \textsf{R} or \textsf{X}.}
 %
 \begin{table}[h!]
   \begin{tabular}{ccc}
     % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-     $RCONH_{2}$ & $RCOX$ & $C_{2}H_{4}O_{2}(CH_{2})_{n}$ \\
+     $RCONH_{2}$ & $COX$ & $C_{2}H_{4}O_{2}(CH_{2})_{n}$ \\
   \end{tabular}
-  \caption{Examples of chemical formulas written using allowed non-Hill symbols, as described in \ref{chemicalFormula-attribute}.}\label{table:non-hill}
+  \caption{Examples of chemical formulas written using the allowed non-Hill symbols described in \ref{chemicalFormula-attribute}.}\label{table:non-hill}
 \end{table}
 %
-\newtxt{In addition, the undefined parenthesised group index $(\ldots)_n$ may also be used. Note that in this case only the subscript $n$ is allowed, integer values $(\ldots)_2$ and expressions such as $(\ldots)_{n-1}$ are considered invalid.}
+\newtxt{Furthermore, the undefined parenthesised group index $(\ldots)_n$ may also be used to indicate an arbitrary repetition of a chemical group. Note that a parenthesized group may only be followed by the subscript $n$. Integer values, for example, $(\ldots)_2$ and expressions such as $(\ldots)_{n-1}$ are considered invalid chemical formula.}
 
-\newtxt{However, the use of \textsf{R}, \textsf{X} and $(\ldots)_n$ is not advised, as any \Reaction in which such a \Species occurs cannot necessarily be balanced. Therefore, any \token{chemicalFormula} that contains any of the aforementioned, non-Hill compatible symbols will raise a `best practices' warning on model validation.}
+\newtxt{Please note, the use of \textsf{R}, \textsf{X} and $(\ldots)_n$ is not generally advised, as any \Reaction in which such a \Species occurs cannot necessarily be balanced and may lead to the construction of an invalid model. To highlight this potential problem, any \token{chemicalFormula} that contains any of the aforementioned, non-Hill compatible symbols will raise a `best practices' warning on model validation.}
 
 \subsection{The \FBC \class{GeneProduct} class}
 \label{geneproduct-class}
@@ -493,9 +493,9 @@ underlying mathematical model please see \ref{examples1:objfunc}.
 \subsection{The \FBC \class{FluxObjective} class}
 \label{fluxobjective-class}
 
-The \FBC \FluxObjective class is derived from \SBML \SBase and inherits
-\token{metaid} and \token{sboTerm}, as well as the subcomponents for
-\Annotation and \Notes.
+The \FBC \FluxObjective class is derived from \SBML \SBase and inherits \token{metaid} and \token{sboTerm}, as well as the subcomponents for \Annotation and \Notes.
+%
+\newtxt{The FluxObjective class is a relatively simple container for a model variable weighted by a signed numerical coefficient. The model variable is defined as being either a `linear' or `quadratic' variable.}
 %
 \begin{figure}[ht]
   \centering
@@ -505,9 +505,9 @@ The \FBC \FluxObjective class is derived from \SBML \SBase and inherits
   \label{fig:fbc_uml_userdefinedconstraint}
 \end{figure}
 %
-The \FluxObjective class is a relatively simple container for a model
-variable that can be expressed as a `linear' or `quadratic', weighted by a signed linear coefficient.
-
+% I don't thing this is needed
+%\newtxt{The \FluxObjective class is a relatively simple container for a model variable that can be defined as the variable type `linear' or `quadratic' and weighted by a signed linear coefficient.}
+%
 \paragraph{The \token{id} and \token{name} attributes}
 A \FluxObjective has two optional attributes: \token{id} an attribute of
 type \primtype{SId} and \token{name} an attribute of type \primtype{string}.
@@ -516,18 +516,18 @@ type \primtype{SId} and \token{name} an attribute of type \primtype{string}.
 The required \token{reaction} is of type \primtype{SIdRef} and is restricted
 to refer only to a \Reaction while the \token{coefficient} attribute
 holds a \primtype{double} referring to the coefficient that this \FluxObjective
-takes in the enclosing \Objective.
+takes in the enclosing \Objective expression.
 
 \newtxt{\paragraph{The \token{variableType} attribute}
 The required \token{variableType} attribute contains a \primtype{FbcVariableType} that
-represents the index to which a variable is raised in a \FluxObjective. For example, where $J_{x}$ represents a steady-state flux the \primtype{FbcVariableType} defines either a \val{linear}, $J^1_x$ or \val{quadratic}, $J^2_x$ term.}
+represents the index to which a variable is raised in a \FluxObjective. For example, where $J$ represents a steady-state flux the \primtype{FbcVariableType} defines either a \val{linear}, $J^1$ or \val{quadratic}, $J^2$ term.}
 
-\paragraph{Flux objectives: example code}
-\newtxt{An objective with purely linear terms in LP format:} \verb"Maximize: 1 R1 + 2 R2"
+\paragraph{Two examples of objective functions encoded in \SBML}
+\newtxt{A common linear objective function (expressed in LP format):} \verb"Maximize: 1 R1"
 %
 \exampleFile{examples/ex-v3-fluxobjective-linear.txt}
 %
-\newtxt{Similarly, an objective with a quadratic term in LP format:} \verb"Minimize: 1 R1 + [4 R2^2]/2"
+\newtxt{An advanced objective function with both a linear and quadratic term (expressed in LP format):} \verb"Minimize: 1 R1 + [4 R2^2]/2"
 %
 \exampleFile{examples/ex-v3-fluxobjective.txt}
 
