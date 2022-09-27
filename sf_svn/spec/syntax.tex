@@ -133,6 +133,8 @@ This is accomplished by defining a set of restrictions which come into effect if
 	\item { A \Reaction \token{lowerFluxBound} attribute may not point to a \Parameter with a \token{value} of \val{INF}.}
 	\item { A \Reaction \token{upperFluxBound} attribute may not point to a \Parameter with a \token{value} of \val{-INF}.}
     \item {For all reactions, the value of a \token{lowerFluxBound} must be less than or equal to the value of the \token{upperFluxBound}.}
+    \item {\newtxt{A \Parameter whose \primtype{SId} is referenced by a \UserDefinedConstraintComponent \token{coefficient} attribute has to be set as \token{constant} and not take the value \val{NaN} or \val{$\pm$INF}.}}
+    \item {\newtxt{A non-constant \Parameter whose \primtype{SId} is referenced by a \UserDefinedConstraintComponent \token{variable} attribute may not be referenced by any \UserDefinedConstraintComponent \token{coefficient}, \UserDefinedConstraint \token{lowerBound} \& \token{upperBound} or \Reaction \token{lowerFluxBound} \& \token{upperFluxBound} attribute.}}
 
 \end{itemize}
 %
