@@ -19,8 +19,9 @@ must declare the use of that package by referencing its URI.  The following
 is the namespace URI for this version of the Flux Balance Constraints
 package for SBML Level~3 Version~1:
 \begin{center}
-\uri{http://www.sbml.org/sbml/level3/version1/fbc/version2}
+\texttt{http://www.sbml.org/sbml/level3/version1/fbc/version3}
 \end{center}
+
 
 In addition, SBML documents using a given package must indicate whether
 understanding the package is required for complete mathematical interpretation
@@ -35,7 +36,7 @@ Constraints package:
 \begin{example}
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1"
-   xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2" fbc:required="false">
+   xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version3" fbc:required="false">
 \end{example}
 
 \begin{figure}[ht!]
@@ -64,38 +65,31 @@ use of a new primitive: the enumeration \primtype{FbcType}, see \ref{fig:fbc_uml
 for the interrelation between
 these entities.
 
-The \primtype{SId} type is used as the data type for the identifiers of \GeneProduct (\ref{geneproduct-class}),
-\GeneProductRef (\ref{geneproductref-class}),
-\GeneProductAssociation (\ref{geneproductassociation-class}),
-\FluxObjective (\ref{fluxobjective-class}) and \Objective (\ref{objective-class}) classes.
+\newtxt{The \primtype{SId} type is used as the data type for the identifiers of \Objective (\ref{objective-class}), \FluxObjective (\ref{fluxobjective-class}), \GeneProduct (\ref{geneproduct-class}), \GeneProductAssociation (\ref{geneproductassociation-class}), \GeneProductRef (\ref{geneproductref-class}), \UserDefinedConstraint (\ref{userdefinedconstraint-class}), \UserDefinedConstraintComponent (\ref{userdefinedconstraintcomponent-class}) and \KeyValuePair (\ref{keyvaluepair-class}) classes.}
 %
 \newtxt{In all cases where the primitive data type \primtype{SId} is used in the \FBCPackage it is used unchanged from its description in \sbmlthreecore. When used as the type of a \token{fbc:id} attribute, that ID is added to the core \primtype{SId} namespace, and must continue to follow those rules for uniqueness: no \token{fbc:id} may duplicate any other \token{fbc:id}, nor the \token{id} of any \Model, \FunctionDefinition, \Compartment, \Species, \Reaction, \SpeciesReference, \ModifierSpeciesReference, \Event, or \Parameter, nor the \token{package:id} of any other SBML Level~3 package element that is also defined as being in the \primtype{SId} namespace.}
 
 In the \FBCPackage the \ListOfObjectives has an attribute of type \primtype{SIdRef} that is used to
-refer to an `active' \Objective as does the extended \Reaction class which defines two attributes referring to flux capacity constraints. Finally, the \GeneProductRef class declares an attribute of type \primtype{SIdRef} which references a \GeneProduct which itself contains an attribute that can refer to a \Species.
+refer to an `active' \Objective as does the extended \Reaction class which defines two attributes referring to flux capacity constraints. The \GeneProductRef class declares an attribute of type \primtype{SIdRef} which references a \GeneProduct which itself contains an attribute that can refer to a \Species. \newtxt{Finally, the \UserDefinedConstraint and \UserDefinedConstraintComponent both declare attributes of type \primtype{SIdRef} and a more detailed description of what they refer to can be found in the relevant class descriptions.}
 
 \subsubsection{Type \primtypeNC{FbcType}}
 \label{primtype-fbctype}
 
-The \FBCPackage defines a new enumerated type \primtype{FbcType} which
-represents the optimization sense of the objective function. It can have one
-of the following two values \val{maximize} or \val{minimize}.
+The \FBCPackage defines a new enumerated type \primtype{FbcType} which represents the optimization sense of the objective function. It can have one of the following two values \val{maximize} or \val{minimize}.
 
 \subsubsection{Type \primtypeNC{FbcVariableType}}
 \label{primtype-fbcvariabletype}
 
-The \FBCPackage defines a new enumerated type \primtype{FbcVariableType} which
-represents the index of a variable that occurs in either the \FluxObjective or \UserDefinedConstraintComponent. It contains the following two values, \val{linear} or \val{quadratic}.
+\newtxt{The \FBCPackage defines a new enumerated type \primtype{FbcVariableType} which
+represents the index of a variable that occurs in either the \FluxObjective or \UserDefinedConstraintComponent. It can have one of two values, \val{linear} or \val{quadratic}.}
 
 
 \subsection{The extended \class{Model} class}
 \label{model-class}
 %\label{listoffluxbounds-class}
 
-The \SBML \Model class is extended by adding a mandatory boolean attribute
-\token{strict} as well as optional lists: %\token{listOfFluxBounds},
-\token{listOfObjectives} and \token{listOfGeneProducts}.
-A \Model may contain at most one of each of these lists.
+\newtxt{The \SBML \Model class is extended by adding a mandatory boolean attribute
+\token{strict} as well as optional lists: \token{listOfObjectives}, \token{listOfGeneProducts} and \token{listOfUserDefinedConstraints}.} A \Model may contain, at most, one of each of these lists.
 
 \begin{figure}[ht]
   \centering
@@ -120,6 +114,8 @@ A \Model may contain at most one of each of these lists.
 \paragraph{The attribute \token{strict}}
 
 The mandatory attribute \token{strict}, of type \primtype{boolean}, is used to apply an additional set of restrictions to the model. The \token{strict} attribute ensures that the \FBCPackage can be used to encode legacy FBA models expressible as Linear Programs (LP's) with software that is unable to analyze arbitrary mathematical expressions. In addition it ensures that a `strict' model is fully described and mathematically consistent, for example, by ensuring that all fluxes have a valid upper or lower bound.
+
+\marginpar{\newtxt{How does strict interact with FBC3?}}
 
 This is accomplished by defining a set of restrictions which come into effect if \token{strict} is set to \val{true}:
 %
@@ -175,15 +171,14 @@ contain at least one \GeneProduct (defined in \ref{geneproduct-class}).
 \subsubsection{The \FBC \class{listOfUserDefinedConstraints}}
 \label{listofuserdefinedconstraints-class}
 
-As shown in \ref{fig:fbc_v3_uml_user_constraints} the \ListOfUserDefinedConstraints is derived from \SBase and inherits the attributes \token{metaid} and \token{sboTerm}, as well as
-the subcomponents for \Annotation and \Notes. The \ListOfUserDefinedConstraints must contain at least one \UserDefinedConstraint (defined in \ref{userdefinedconstraint-class}).
+\newtxt{As shown in \ref{fig:fbc_uml} the \ListOfUserDefinedConstraints is derived from \SBase and inherits the attributes \token{metaid} and \token{sboTerm}, as well as the subcomponents for \Annotation and \Notes. The \ListOfUserDefinedConstraints must contain at least one \UserDefinedConstraint (defined in \ref{userdefinedconstraint-class}).}
 
 \subsubsection{A note on units}
 \label{fbcunits}
 The main unit definitions that should be considered when using the \FBCPackage
 are the global model definitions of ``extent''  and ``time'' as all \FBC flux
 related classes (i.e., %\FluxBound and
-\FluxObjective implicitly attain the same
+\FluxObjective implicitly attains the same
 unit as the \Reaction that they reference). More details on units can be found
 in their respective class definitions.
 
