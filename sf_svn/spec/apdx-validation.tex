@@ -120,7 +120,7 @@ instance of each of the \ListOfObjectives, \ListOfFluxBounds,
 \ListOfGeneProducts and \ListOfUserDefinedConstraints elements. No other
 elements from the SBML Level~3 Flux Balance Constraints namespaces are
 permitted on a \Model object. (Reference: SBML Level~3 Specification for
-Flux Balance Constraints, Version~3, \sec{extended-model-class}.)}
+Flux Balance Constraints, Version~3, \sec{model-class}.)}
 
 \validRule{fbc-20202}{The various
 \textsf{\textbf{ListOf\rule{0.15in}{0.5pt}}} subobjects with an \Model
@@ -165,38 +165,38 @@ Package Specification for Flux Balance Constraints, Version~3,
 \token{fbc:\-strict} and \token{fbc:\-strict}. No other attributes from
 the SBML Level~3 Flux Balance Constraints namespaces are permitted on a
 \Model object. (Reference: SBML Level~3 Specification for Flux Balance
-Constraints, Version~3, \sec{extended-model-class}.)}
+Constraints, Version~3, \sec{model-class}.)}
 
 
 \validRule{fbc-20210}{The attribute \token{fbc:\-strict} on a \Model
 must have a value of data type \token{boolean}. (Reference: SBML Level~3
 Specification for Flux Balance Constraints, Version~3,
-\sec{extended-model-class}.)}
+\sec{model-class}.)}
 
 \validRule{fbc-20211}{Apart from the general notes and annotations
 subobjects permitted on all SBML objects, a \ListOfGeneProducts
 container object may only contain \GeneProduct objects. (Reference: SBML
 Level~3 Specification for Flux Balance Constraints, Version~3,
-\sec{extended-model-class}.)}
+\sec{model-class}.)}
 
 \validRule{fbc-20212}{A \ListOfGeneProducts object may have the optional
 SBML Level~3 Core attributes \token{metaid} and \token{sboTerm}. No
 other attributes from the SBML Level~3 Core namespaces are permitted on
 a \ListOfGeneProducts object. (Reference: SBML Level~3 Specification for
-Flux Balance Constraints, Version~3, \sec{extended-model-class}.)}
+Flux Balance Constraints, Version~3, \sec{model-class}.)}
 
 \validRule{fbc-20213}{Apart from the general notes and annotations
 subobjects permitted on all SBML objects, a
 \ListOfUserDefinedConstraints container object may only contain
 \UserDefinedConstraint objects. (Reference: SBML Level~3 Specification
-for Flux Balance Constraints, Version~3, \sec{extended-model-class}.)}
+for Flux Balance Constraints, Version~3, \sec{model-class}.)}
 
 \validRule{fbc-20214}{A \ListOfUserDefinedConstraints object may have
 the optional SBML Level~3 Core attributes \token{metaid} and
 \token{sboTerm}. No other attributes from the SBML Level~3 Core
 namespaces are permitted on a \ListOfUserDefinedConstraints object.
 (Reference: SBML Level~3 Specification for Flux Balance Constraints,
-Version~3, \sec{extended-model-class}.)}
+Version~3, \sec{model-class}.)}
 
 \subsubsection*{Rules for extended \class{Species} object}
 
@@ -204,19 +204,19 @@ Version~3, \sec{extended-model-class}.)}
 \token{fbc:\-charge} and \token{fbc:\-chemicalFormula}. No other
 attributes from the SBML Level~3 Flux Balance Constraints namespaces are
 permitted on a \Species object. (Reference: SBML Level~3 Specification
-for Flux Balance Constraints, Version~3, \sec{extended-species-class}.)}
+for Flux Balance Constraints, Version~3, \sec{species-class}.)}
 
 \validRule{fbc-20302} {(This validation rule does not apply in Flux Balance Constraints Version~3.)}
 
 \validRule{fbc-20303}{The attribute \token{fbc:\-chemicalFormula} on a
 \Species must have a value of data type \token{string}. (Reference: SBML
 Level~3 Specification for Flux Balance Constraints, Version~3,
-\sec{extended-species-class}.)}
+\sec{species-class}.)}
 
 \validRule{fbc-20304}{The attribute \token{fbc:\-charge} on a \Species
 must have a value of data type \token{double}. (Reference: SBML Level~3
 Specification for Flux Balance Constraints, Version~3,
-\sec{extended-species-class}.)}
+\sec{species-class}.)}
 
 \subsubsection*{Rules for \class{Objective} object}
 
@@ -341,7 +341,7 @@ Constraints, Version~3, \sec{fluxobjective-class}.)}
 instance of the \GeneProductAssociation element. No other elements from
 the SBML Level~3 Flux Balance Constraints namespaces are permitted on a
 \Reaction object. (Reference: SBML Level~3 Specification for Flux
-Balance Constraints, Version~3, \sec{extended-reaction-class}.)}
+Balance Constraints, Version~3, \sec{reaction-class-ga}.)}
 
 \validRule{fbc-20702}{A \Reaction object may have the optional
 attributes
@@ -349,7 +349,7 @@ attributes
 attributes from the SBML Level~3 Flux Balance Constraints namespaces are
 permitted on a \Reaction object. (Reference: SBML Level~3 Specification
 for Flux Balance Constraints, Version~3,
-\sec{extended-reaction-class}.)}
+\sec{reaction-class-ga}.)}
 
 \validRule{fbc-20703}{The attribute \token{fbc:\-lowerFluxBound} of a \Reaction
 must be of the data type \token{SIdRef}. (References: SBML Level~3
@@ -365,13 +365,13 @@ Package Specification for Flux Balance Constraints, Version~3,
 \token{fbc:\-lowerFluxBound} of a \Reaction object must be the
 identifier of an existing \Parameter object defined in the enclosing
 \Model object. (Reference: SBML Level~3 Specification for Flux Balance
-Constraints, Version~3, \sec{extended-reaction-class}.)}
+Constraints, Version~3, \sec{reaction-class-ga}.)}
 
 \validRule{fbc-20706}{The value of the attribute
 \token{fbc:\-upperFluxBound} of a \Reaction object must be the
 identifier of an existing \Parameter object defined in the enclosing
 \Model object. (Reference: SBML Level~3 Specification for Flux Balance
-Constraints, Version~3, \sec{extended-reaction-class}.)}
+Constraints, Version~3, \sec{reaction-class-ga}.)}
 
 \validRule{fbc-20707}{When the value of the {\Model}s \token{fbc:\-strict}
 attribute is \val{true}, a \Reaction must define the attributes
